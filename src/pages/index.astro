@@ -11,27 +11,27 @@ const projects = [
 	{ number: '06', title: 'Out of Order', kind: 'Augmented reality exhibition', year: '2023', tags: ['AR', 'Auto-ethnography'], intro: 'A mixed-media exhibition about queerness, Christianity, and the glitches between identities.', body: 'Poster prints become portals through a phone camera. The Unity and Vuforia system layers animation onto physical works, creating a contrast between what is fixed on the wall and what refuses to stay still.', meta: 'Unity / Vuforia / Photoshop / Illustrator', className: 'out-of-order' },
 ];
 ---
-/* Each section of the webpage */
+<!-- Each section of the webpage -->
 <Layout>
 	<main>
-		//Top header and navigation
+		<!--Top header and navigation -->
         <nav class="nav shell" aria-label="Main navigation">
 			<a class="wordmark" href="#top" aria-label="Thomas Walker home">TW<span>↗</span></a>
 			<div class="nav-links"><a href="#work">Work</a><a href="#about">About</a><a href="mailto:hesthomas@protonmail.com" class="nav-contact">Get in touch <span>↗</span></a></div>
 		</nav>
-        // Hero section with introduction and call to action
+        <!--Hero section with introduction and call to action-->
 		<section class="hero shell" id="top">
 			<div class="hero-kicker"><span class="status-dot"></span> Available for UX, product & creative technology roles</div>
 			<h1>I make digital<br /><em>things feel human.</em></h1>
 			<div class="hero-bottom"><p class="hero-summary">Thomas Walker is an interactive media and experience designer building research-driven experiences — from installations and games to digital products and workflow solutions.</p><a class="scroll-cue" href="#work"><span>↓</span> Explore selected work</a></div>
 		</section>
-        //Selection of projects generated from the projects array
+        <!--Selection of projects generated from the projects array-->
 		<section class="work-section" id="work">
 			<div class="shell section-heading"><p class="eyebrow">Selected work <span>({projects.length})</span></p><p class="section-note">Interfaces for remembering,<br />playing, and seeing differently.</p></div>
 			<div class="project-list shell">
 				{projects.map((project) => (
 					<article class={`project ${project.className}`}>
-						//Unique visual representation for each project, including images, overlays, and special markers based on project type
+						<!-- Unique visual representation for each project, including images, overlays, and special markers based on project type -->
                         <div class="project-visual">
 							{project.image && <img src={project.image} alt="" loading="lazy" />}
 							<div class="visual-overlay"></div><span class="project-number">{project.number}</span>
@@ -45,13 +45,13 @@ const projects = [
 				))}
 			</div>
 		</section>
-        /*About section with personal introduction and contact link*/
+        <!--About section with personal introduction and contact link -->
 		<section class="about shell" id="about"><div class="about-label"><p class="eyebrow">About / 06</p><span class="about-line"></span></div><div class="about-copy"><h2>Curious about<br /><em>how people make meaning.</em></h2><p>Hello, I’m Thomas — a creative technologist using speculative design and ethnographic practices to push forward innovation in interactive installations and serious games.</p><p>I earned my B.S. in Computer Science with a focus on Game Development at Samford University and am currently pursuing an Interactive Design M.F.A. at SCAD. My work lives where rigorous research meets a little bit of wonder.</p><a class="text-link" href="mailto:hello@hesthomas.com">Let’s make something thoughtful <span>↗</span></a></div></section>
 		<footer class="footer shell"><p>Thomas Walker <span>© 2026</span></p><div><a href="mailto:hello@hesthomas.com">Email</a><a href="https://www.linkedin.com/in/thomas-walker-247178142/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
 	</main>
 </Layout>
 
-/* Global styles and font imports */
+<!-- Global styles and font imports -->
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
 	:global(*) { box-sizing: border-box; } :global(html) { scroll-behavior: smooth; } :global(body) { background: #f3eedf; color: #1c1c1a; font-family: 'DM Sans', sans-serif; } :global(a) { color: inherit; text-decoration: none; } :global(.shell) { width: min(1180px, calc(100% - 64px)); margin: 0 auto; } :global(main) { overflow: hidden; }
