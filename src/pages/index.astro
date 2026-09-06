@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+// Data for each portfolio piece, including title, year, tags, and media links. This array is used to dynamically generate the project list on the homepage.
 const projects = [
 	{ number: '01', title: 'The Matthew I Knew', kind: 'Interactive documentary game', year: '2026', tags: ['True-crime game', 'Graduate thesis'], video: 'https://youtu.be/P6OlBI2Bzb4', image: 'https://i.ytimg.com/vi/P6OlBI2Bzb4/maxresdefault.jpg', intro: 'A point-and-click investigation into what the historical record can tell us about the 1998 murder of Matthew Shepard — and what it cannot.', body: 'Players comb through primary source documents, court testimonies, and archival evidence in an atmospheric Ren\'Py game. The experience is designed to hold ambiguity open, building a more reflective kind of empathy for everyone connected to the case.', meta: 'Ren\'Py / Documentary research / Procedural rhetoric', className: 'feature' },
 	{ number: '02', title: 'Homecoming', kind: 'Interactive installation', year: '2026', tags: ['Art installation', 'Speculative documentary'], video: 'https://youtube.com/shorts/RHr_rQ15bUE', image: 'https://i.ytimg.com/vi/RHr_rQ15bUE/maxresdefault.jpg', intro: 'A live group portrait that asks what happens when a family archive becomes an algorithm.', body: 'Inspired by my grandfather\'s hand-drawn church portraits, Homecoming uses computer vision to number and preserve visitors as a collective silhouette. Installed at the PULSE exhibition at the Jepson Center / Telfair Museums, the work welcomed 4,000+ visitors.', meta: 'TouchDesigner / MediaPipe / Machine learning', className: 'installation' },
@@ -10,7 +11,7 @@ const projects = [
 	{ number: '06', title: 'Out of Order', kind: 'Augmented reality exhibition', year: '2023', tags: ['AR', 'Auto-ethnography'], intro: 'A mixed-media exhibition about queerness, Christianity, and the glitches between identities.', body: 'Poster prints become portals through a phone camera. The Unity and Vuforia system layers animation onto physical works, creating a contrast between what is fixed on the wall and what refuses to stay still.', meta: 'Unity / Vuforia / Photoshop / Illustrator', className: 'out-of-order' },
 ];
 ---
-
+//Bottom About banner
 <Layout>
 	<main>
 		<nav class="nav shell" aria-label="Main navigation">
