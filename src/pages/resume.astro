@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main id="top">
+		<nav class="nav shell" aria-label="Main navigation">
+			<a class="wordmark" href="/" aria-label="Thomas Walker home"><img src="/favicon.svg" alt="" /></a>
+			<div class="nav-links"><a href="/">Work</a><a class="current-page" href="/resume" aria-current="page">Resume</a><a href="/#about">About</a><a href="mailto:hesthomas@protonmail.com" class="nav-contact">Get in touch <span>↗</span></a></div>
+		</nav>
+		<div class="resume-page">
+		<section class="resume-document" aria-label="Thomas Walker resume">
+			<iframe
+				src="https://docs.google.com/document/d/e/2PACX-1vRy6Iz0_4psPwGVfEar_Ivywwa4Xdm4-KDE28q9Xc-qxvhwulvo7NI59MhKrPd7NpFeygZXVpJEKoAC/pub?embedded=true"
+				title="Thomas Walker resume"
+				loading="lazy"
+				scrolling="no"
+			></iframe>
+		</section>
+		<a class="download-button" href="https://docs.google.com/document/d/e/2PACX-1vRy6Iz0_4psPwGVfEar_Ivywwa4Xdm4-KDE28q9Xc-qxvhwulvo7NI59MhKrPd7NpFeygZXVpJEKoAC/pub" target="_blank" rel="noreferrer">Download resume <span>↗</span></a>
+		</div>
+		<footer class="footer shell"><p>Thomas Walker <span>© 2026</span></p><div><a href="mailto:hesthomas@protonmail.com">Email</a><a href="https://www.linkedin.com/in/thomas-walker-247178142/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
+	</main>
+</Layout>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+
+	:global(*) { box-sizing: border-box; }
+	:global(body) { background: #f3eedf; color: #252522; font-family: 'DM Sans', sans-serif; }
+	:global(a) { color: inherit; text-decoration: none; }
+	:global(.shell) { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+	.nav { height: 92px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #cbc6b7; }
+	.wordmark { display: block; width: 34px; height: 34px; }
+	.wordmark img { width: 150%; height: 150%; display: block; }
+	.nav-links { display: flex; align-items: center; gap: 30px; font-family: 'DM Mono', monospace; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+	.nav-links a { opacity: .72; }
+	.nav-links a:hover { opacity: 1; }
+	.nav-links a.current-page { opacity: 1; font-weight: 500; }
+	.nav-contact { display: inline-flex; align-items: center; gap: 10px; background: #252522; color: #f3eedf; padding: 11px 14px; opacity: 1; }
+	.nav-contact span { color: #61845c; font-size: 1.25rem; line-height: .7; }
+	.nav .wordmark { width: 34px; height: 34px; }
+	.nav .wordmark img { width: 150%; height: 150%; }
+	.nav .nav-contact { background-color: #1c1c1a !important; color: #f3eedf; opacity: 1 !important; }
+	.wordmark { position: relative; }
+	.wordmark img { transition: transform .25s cubic-bezier(.22, 1, .36, 1); }
+	.wordmark::before, .wordmark::after { position: absolute; z-index: 2; color: #e84a2a; opacity: 0; pointer-events: none; }
+	.wordmark::before { content: '✦'; top: -11px; right: -9px; font-size: 12px; }
+	.wordmark::after { content: '✦'; bottom: -9px; left: -10px; color: #61845c; font-size: 9px; }
+	.wordmark.is-celebrating img { animation: wordmark-pop .65s cubic-bezier(.22, 1, .36, 1); }
+	.wordmark.is-celebrating::before, .wordmark.is-celebrating::after { animation: wordmark-spark .65s ease-out; }
+	@keyframes wordmark-pop { 0% { transform: rotate(0) scale(1); } 45% { transform: rotate(12deg) scale(1.16); } 100% { transform: rotate(0) scale(1); } }
+	@keyframes wordmark-spark { 0% { opacity: 0; transform: scale(.4) rotate(-20deg); } 35% { opacity: 1; transform: scale(1.2) rotate(12deg); } 100% { opacity: 0; transform: scale(.8) rotate(35deg); } }
+	.resume-page { width: min(1180px, calc(100% - 64px)); margin: 0 auto; padding: 0 0 24px; }
+	.resume-header { border-bottom: 1px solid #cbc6b7; padding-bottom: 0px; }
+	.back-link, .eyebrow { font-family: 'DM Mono', monospace; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+	.back-link { display: inline-block; margin-bottom: 92px; color: #5e5a52; transition: color .2s ease, transform .2s ease; }
+	.back-link:hover, .back-link:focus-visible { color: #e84a2a; transform: translateX(-3px); }
+	.eyebrow { color: #e84a2a; margin: 0 0 14px; }
+	h1 { margin: 0; font-size: clamp(4rem, 10vw, 8.5rem); font-weight: 500; letter-spacing: -.08em; line-height: .85; }
+	.intro { margin: 22px 0 0; color: #5e5a52; font: 1.2rem/1.4 'Fraunces', serif; }
+	.download-button { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; background: #252522; color: #f3eedf; padding: 12px 15px; font: 500 .75rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; transition: transform .2s ease, box-shadow .2s ease; }
+	.download-button span { color: #61845c; font-size: 1.25rem; line-height: .7; }
+	.download-button:hover, .download-button:focus-visible { transform: translateY(-2px); box-shadow: 4px 4px 0 #e84a2a; }
+	.resume-document { margin-top: 0px; background: transparent; }
+	.resume-document iframe { display: block; width: 100%; height: 1200px; border: 0; overflow: hidden; background: transparent; mix-blend-mode: multiply; }
+	.footer { width: min(1180px, calc(100% - 64px)); margin: 0 auto; border-top: 1px solid #cbc6b7; padding: 22px 0 35px; display: flex; justify-content: space-between; color: #5e5a52; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; }
+	.footer p { margin: 0; }
+	.footer p span { margin-left: 22px; color: #aaa599; }
+	.footer div { display: flex; gap: 25px; margin-left: auto; justify-content: flex-end; }
+	.footer a { opacity: .72; transition: opacity .2s ease; }
+	.footer a:hover, .footer a:focus-visible { opacity: 1; }
+	@media (max-width: 700px) {
+		.nav { height: 72px; }
+		.nav-links { gap: 14px; }
+		.nav-links a:not(.nav-contact) { display: none; }
+		.nav-contact { padding: 9px 10px; }
+		.resume-page { width: min(100% - 36px, 1180px); padding-top: 0; padding-bottom: 24px; }
+		.back-link { margin-bottom: 64px; }
+		.resume-document { margin-top: 0px; }
+		.resume-document iframe { height: 1800px; }
+		.footer { align-items: start; flex-direction: column; gap: 18px; }
+		.footer div { margin-left: 0; justify-content: flex-start; }
+	}
+	:global(::selection) { background: #e84a2a; color: #f3eedf; text-shadow: none; }
+	:global(::-moz-selection) { background: #e84a2a; color: #f3eedf; text-shadow: none; }
+	@media (hover: hover) and (pointer: fine) {
+		:global(body) { cursor: url('/cursor.svg') 3 2, auto; }
+		:global(a), :global(button), :global(summary) { cursor: url('/cursor.svg') 3 2, pointer; }
+		.resume-page, .resume-page * { cursor: url('/cursor.svg') 3 2, auto; }
+		.resume-page a, .resume-page button { cursor: url('/cursor.svg') 3 2, pointer; }
+		.resume-document iframe { cursor: url('/cursor.svg') 3 2, auto; }
+	}
+</style>
+
+<script>
+	const wordmark = document.querySelector<HTMLAnchorElement>('.wordmark');
+
+	wordmark?.addEventListener('click', (event) => {
+		event.preventDefault();
+		wordmark.classList.remove('is-celebrating');
+		void wordmark.offsetWidth;
+		wordmark.classList.add('is-celebrating');
+		window.setTimeout(() => { window.location.href = wordmark.href; }, 700);
+	});
+</script>
