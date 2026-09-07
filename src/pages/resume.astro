@@ -4,10 +4,12 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
 	<main id="top">
+		<!-- Shared site navigation with Resume marked as the current page. -->
 		<nav class="nav shell" aria-label="Main navigation">
 			<a class="wordmark" href="/" aria-label="Thomas Walker home"><img src="/favicon.svg" alt="" /></a>
 			<div class="nav-links"><a href="/">Work</a><a class="current-page" href="/resume" aria-current="page">Resume</a><a href="/#about">About</a><a href="mailto:hesthomas@protonmail.com" class="nav-contact">Get in touch <span>↗</span></a></div>
 		</nav>
+		<!-- Published Google Docs resume and download action. -->
 		<div class="resume-page">
 		<section class="resume-document" aria-label="Thomas Walker resume">
 			<iframe
@@ -19,12 +21,14 @@ import Layout from '../layouts/Layout.astro';
 		</section>
 		<a class="download-button" href="https://docs.google.com/document/d/e/2PACX-1vRy6Iz0_4psPwGVfEar_Ivywwa4Xdm4-KDE28q9Xc-qxvhwulvo7NI59MhKrPd7NpFeygZXVpJEKoAC/pub" target="_blank" rel="noreferrer">Download resume <span>↗</span></a>
 		</div>
+		<!-- Shared site footer and external contact links. -->
 		<footer class="footer shell"><p>Thomas Walker <span>© 2026</span></p><div><a href="mailto:hesthomas@protonmail.com">Email</a><a href="https://www.linkedin.com/in/thomas-walker-247178142/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
 	</main>
 </Layout>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+	/* Resume-page layout, navigation, document embed, and responsive rules. */
 
 	:global(*) { box-sizing: border-box; }
 	:global(body) { background: #f3eedf; color: #252522; font-family: 'DM Sans', sans-serif; }
@@ -39,6 +43,10 @@ import Layout from '../layouts/Layout.astro';
 	.nav-links a.current-page { opacity: 1; font-weight: 500; }
 	.nav-contact { display: inline-flex; align-items: center; gap: 10px; background: #252522; color: #f3eedf; padding: 11px 14px; opacity: 1; }
 	.nav-contact span { color: #61845c; font-size: 1.25rem; line-height: .7; }
+	.nav-contact { transition: transform .2s ease, box-shadow .2s ease; }
+	.nav-contact span { display: inline-block; transition: transform .2s ease; }
+	.nav-contact:hover, .nav-contact:focus-visible { transform: translateY(-2px); box-shadow: 4px 4px 0 #e84a2a; }
+	.nav-contact:hover span, .nav-contact:focus-visible span { transform: translate(2px, -2px); }
 	.nav .wordmark { width: 34px; height: 34px; }
 	.nav .wordmark img { width: 150%; height: 150%; }
 	.nav .nav-contact { background-color: #1c1c1a !important; color: #f3eedf; opacity: 1 !important; }
