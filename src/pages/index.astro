@@ -52,7 +52,7 @@ const getYouTubeEmbedUrl = (videoUrl: string) => {
 									<iframe src={getYouTubeEmbedUrl(project.video)} title={`${project.title} video`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 									{project.videoCredit && <p class="video-credit">{project.videoCredit}</p>}
 								</div>}
-								{project.image && <div class={`carousel-slide${project.video ? '' : ' is-active'}`} data-slide><img src={project.image} alt={`${project.title} preview`} loading="lazy" /><span class="placeholder-label">Preview still</span></div>}
+								{project.image && <div class={`carousel-slide${project.video ? '' : ' is-active'}`} data-slide><img src={typeof project.image === 'string' ? project.image : project.image.src} alt={`${project.title} preview`} loading="lazy" /><span class="placeholder-label">Preview still</span></div>}
 								<div class="carousel-slide" data-slide><img src={`https://picsum.photos/seed/${project.className}-detail-1/1200/800`} alt={`${project.title} placeholder photo 2`} loading="lazy" /><span class="placeholder-label">Placeholder photo 02</span></div>
 								<div class="carousel-slide" data-slide><img src={`https://picsum.photos/seed/${project.className}-detail-2/1200/800`} alt={`${project.title} placeholder photo 3`} loading="lazy" /><span class="placeholder-label">Placeholder photo 03</span></div>
 							</div>
