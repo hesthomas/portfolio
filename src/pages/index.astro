@@ -45,20 +45,14 @@ const getYouTubeEmbedUrl = (videoUrl: string) => {
 			<div class="project-list shell">
 				{projects.map((project) => (
 					<article class={`project ${project.className}`}>
-						<!-- Project media carousel, credits, markers, and controls. -->
-						<div class="project-visual" data-carousel>
-							<div class="carousel-track">
-								{project.video && <div class="carousel-slide is-active" data-slide>
+						<!-- Project media, credits, and markers. -->
+						<div class="project-visual">
+							{project.video && (
+								<div class="video-frame">
 									<iframe src={getYouTubeEmbedUrl(project.video)} title={`${project.title} video`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 									{project.videoCredit && <p class="video-credit">{project.videoCredit}</p>}
-								</div>}
-								{project.image && <div class={`carousel-slide${project.video ? '' : ' is-active'}`} data-slide><img src={typeof project.image === 'string' ? project.image : project.image.src} alt={`${project.title} preview`} loading="lazy" /><span class="placeholder-label">Preview still</span></div>}
-								<div class="carousel-slide" data-slide><img src={`https://picsum.photos/seed/${project.className}-detail-1/1200/800`} alt={`${project.title} placeholder photo 2`} loading="lazy" /><span class="placeholder-label">Placeholder photo 02</span></div>
-								<div class="carousel-slide" data-slide><img src={`https://picsum.photos/seed/${project.className}-detail-2/1200/800`} alt={`${project.title} placeholder photo 3`} loading="lazy" /><span class="placeholder-label">Placeholder photo 03</span></div>
-							</div>
-							<button class="carousel-arrow carousel-prev" type="button" data-carousel-prev aria-label={`Previous ${project.title} media`}>←</button>
-							<button class="carousel-arrow carousel-next" type="button" data-carousel-next aria-label={`Next ${project.title} media`}>→</button>
-							<span class="carousel-status"><span data-carousel-index>01</span> / 03</span>
+								</div>
+							)}
 							<span class="project-number">{project.number}</span>
 							{project.className === 'out-of-order' && <span class="ar-mark">AR<br /><small>SCAN TO<br />REVEAL</small></span>}
 							{project.className === 'installation' && <span class="frame-mark">◉ &nbsp; 4000+</span>}
@@ -114,20 +108,8 @@ const getYouTubeEmbedUrl = (videoUrl: string) => {
 	.footer a:hover, .footer a:focus-visible { opacity: 1; }
 	.project-visual iframe { width: 100%; height: 100%; min-height: 430px; display: block; border: 0; }
 	.video-credit { margin: 10px 14px 14px; color: var(--palette-muted-light); font: .68rem/1.35 'DM Mono', monospace; }
-	/* Carousel layout, controls, and slide transitions. */
-	.carousel-track { position: relative; min-height: 430px; }
-	.carousel-slide { display: none; position: relative; min-height: 430px; animation: carousel-fade .35s ease; }
-	.carousel-slide.is-active { display: block; }
-	.carousel-slide > img { opacity: .78; mix-blend-mode: normal; filter: saturate(.75) contrast(1.05); }
-	.placeholder-label { position: absolute; left: 16px; bottom: 14px; padding: 7px 9px; background: var(--palette-ink); color: var(--palette-paper); font: 500 .62rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
-	.carousel-arrow { position: absolute; z-index: 4; top: 50%; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid rgba(243, 238, 223, .7); background: rgba(28, 28, 26, .84); color: var(--palette-paper); font: 1.1rem 'DM Sans', sans-serif; transform: translateY(-50%); cursor: pointer; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
-	.carousel-prev { left: 14px; }
-	.carousel-next { right: 14px; }
-	.carousel-arrow:hover, .carousel-arrow:focus-visible { background: var(--palette-accent); color: var(--palette-paper); transform: translateY(-50%) scale(1.08); }
-	.carousel-arrow:focus-visible { outline: 2px solid var(--palette-paper); outline-offset: 3px; }
-	.carousel-status { position: absolute; z-index: 4; top: 16px; right: 16px; padding: 6px 8px; background: rgba(28, 28, 26, .84); color: var(--palette-paper); font: 500 .62rem 'DM Mono', monospace; letter-spacing: .08em; }
-	@keyframes carousel-fade { from { opacity: .35; } to { opacity: 1; } }
-	@media (max-width: 700px) { .project-visual iframe, .carousel-track, .carousel-slide { min-height: 300px; } }
+	.video-frame { position: relative; height: 100%; min-height: 430px; }
+	@media (max-width: 700px) { .project-visual iframe, .video-frame { min-height: 300px; } }
 
 	/* Change the variables above to recolor the page globally. */
 	:global(body) { background: var(--palette-paper); color: var(--palette-ink); }
@@ -175,21 +157,6 @@ const getYouTubeEmbedUrl = (videoUrl: string) => {
 		void wordmark.offsetWidth;
 		wordmark.classList.add('is-celebrating');
 		window.setTimeout(() => wordmark.classList.remove('is-celebrating'), 700);
-	});
-
-	document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
-		const slides = Array.from(carousel.querySelectorAll<HTMLElement>('[data-slide]'));
-		const indexLabel = carousel.querySelector<HTMLElement>('[data-carousel-index]');
-		let currentIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
-
-		const showSlide = (nextIndex: number) => {
-			currentIndex = (nextIndex + slides.length) % slides.length;
-			slides.forEach((slide, index) => slide.classList.toggle('is-active', index === currentIndex));
-			if (indexLabel) indexLabel.textContent = String(currentIndex + 1).padStart(2, '0');
-		};
-
-		carousel.querySelector<HTMLButtonElement>('[data-carousel-prev]')?.addEventListener('click', () => showSlide(currentIndex - 1));
-		carousel.querySelector<HTMLButtonElement>('[data-carousel-next]')?.addEventListener('click', () => showSlide(currentIndex + 1));
 	});
 
 	const menuToggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
